@@ -434,7 +434,7 @@ import os
 
 if builder.backend == 'amb2':
   BuildScripts += [
-    # 'PackageScript',
+    'PackageScript',
   ]
 
 builder.Build(BuildScripts, { 'MMS': MMS })
