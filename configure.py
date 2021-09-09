@@ -19,7 +19,7 @@ parser.default_arch = 'x86'
 parser.default_build_folder = make_objdir_name
 parser.options.add_option('--hl2sdk-root', type=str, dest='hl2sdk_root', default=None,
                        help='Root search folder for HL2SDKs')
-parser.options.add_option('--mms_path', type=str, dest='mms_path', default=None,
+parser.options.add_option('--mms_path', '--mms-path', type=str, dest='mms_path', default=None,
                        help='Metamod:Source source tree folder')
 parser.options.add_option('--enable-debug', action='store_const', const='1', dest='debug',
                        help='Enable debugging symbols')
