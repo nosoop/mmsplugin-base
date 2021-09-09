@@ -1,9 +1,3 @@
-proj_name = 'sample'
-
-proj_srcs = [
-  'mmsplugin.cpp',
-]
-
 import os, sys
 
 class SDK(object):
@@ -272,13 +266,13 @@ class MMSConfig(object):
     defines = ['SE_' + PossibleSDKs[i].define + '=' + PossibleSDKs[i].code for i in PossibleSDKs]
     compiler.defines += defines
     paths = [
-              ['public'],
-              ['public', 'engine'],
-              ['public', 'mathlib'],
-              ['public', 'vstdlib'],
-              ['public', 'tier0'],
-              ['public', 'tier1'],
-            ]
+      ['public'],
+      ['public', 'engine'],
+      ['public', 'mathlib'],
+      ['public', 'vstdlib'],
+      ['public', 'tier0'],
+      ['public', 'tier1'],
+    ]
 
     if not builder.options.mms_path:
       raise Exception('Metamod:Source path is missing. Supply a --mms_path flag')
@@ -429,25 +423,18 @@ MMS.detectProductVersion()
 MMS.detectSDKs()
 MMS.configure()
 
-BuildScripts = [] # add sub-modules here
+BuildScripts = [
+  'AMBuilder'
+]
+
 if getattr(builder.options, 'enable_tests', False):
     BuildScripts += [] # add tests here
 
 import os
 
-for sdk_name in MMS.sdks:
-  for arch in MMS.archs:
-    sdk = MMS.sdks[sdk_name]
-
-    if not arch in sdk.platformSpec[builder.target.platform]:
-      continue
-
-    name = proj_name + '.' + sdk.ext
-    binary = MMS.HL2Library(builder, name, sdk, arch)
-
-    binary.sources += proj_srcs
-
-    nodes = builder.Add(binary)
-    MMS.binaries += [nodes]
+if builder.backend == 'amb2':
+  BuildScripts += [
+    # 'PackageScript',
+  ]
 
 builder.Build(BuildScripts, { 'MMS': MMS })
