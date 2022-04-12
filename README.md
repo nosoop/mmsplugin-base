@@ -8,17 +8,19 @@ A project repository template that builds Metamod:Source plugins using [AMBuild]
 necessary HL2SDK branches, Metamod:Source, and AMBuild.)
 2. Run the following set of commands:
 
-    # clone this repository to mmsplugin-sample (or start a new project based off of the template and clone it)
-    git clone https://github.com/nosoop/mmsplugin-base mmsplugin-sample
-    
-    # create a build directory
-    cd mmsplugin-sample
-    mkdir build
-    cd build
-    
-    # configure the build with the appropriate paths and the SDKs you'd like to build with, then build
-    python ../configure.py --hl2sdk-root ${PATH_CONTAINING_HL2SDK_DIRS} -s ${SDK_VALUES} --mms-path ${PATH_TO_MMSOURCE}
-    ambuild
+```
+# clone this repository to mmsplugin-sample (or start a new project based off of the template and clone it)
+git clone https://github.com/nosoop/mmsplugin-base mmsplugin-sample
+
+# create a build directory
+cd mmsplugin-sample
+mkdir build
+cd build
+
+# configure the build with the appropriate paths and the SDKs you'd like to build with, then build
+python ../configure.py --hl2sdk-root ${PATH_CONTAINING_HL2SDK_DIRS} -s ${SDK_VALUES} --mms-path ${PATH_TO_MMSOURCE}
+ambuild
+```
 
 [AMBuild]: https://github.com/alliedmodders/ambuild
 [Building SourceMod]: https://wiki.alliedmods.net/Building_SourceMod
